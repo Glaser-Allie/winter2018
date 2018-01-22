@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Special+Elite");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 /*BODY STYLING*/
 *,
 *:before,
@@ -8,7 +10,8 @@
 html,
 body {
   height: 100vh;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: "Special Elite", cursive; }
 
 body {
   background: #fff;
@@ -21,7 +24,7 @@ h1 {
   justify-content: flex-start;
   font-family: "Special Elite", cursive;
   text-align: left;
-  margin: 10vh 0 0 0;
+  margin: 2vh 0 10vh 0;
   font-size: 1.75rem; }
 
 a {
@@ -230,5 +233,11 @@ footer {
   .nav-visible {
     width: 80vw;
     display: flex; } }
+figure {
+  margin-left: 5vw;
+  @iclude center; }
+
+figure img, figcaption {
+  width: 60vw; }
 
 /*# sourceMappingURL=style.css.map */
