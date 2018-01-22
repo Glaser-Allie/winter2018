@@ -1,1 +1,57 @@
-<p>Hello World!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello CS313</title>
+
+    <link rel="stylesheet" media="screen" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Allie Glaser">
+    <meta name="description" content="Web Engineering II Experiments.">
+</head>
+
+<body>
+    <nav>
+        <div class='menu_button'>
+            <button>
+        <span class="active"></span>
+        <span class="active"></span>
+     </button>
+        </div>
+        <ul class="home_menu">
+            <li><a href="http://allieglaser.com/" target="_blank">Home</a></li>
+            <li><a href="http://codepen.io/aaglser/" target="_blank">Code Pens</a></li>
+            <li><a href="http://allieglaser.com/poop/" target="_blank">Fun With Poop!</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="sidebar"></div>
+        <div class="content">
+            <article class="home">
+                <h1>If you stopped by to see something awesome, you're probably 'bout to be disappointed &nbsp &nbsp &nbsp &nbsp:)</h1>
+            </article>
+
+            <footer>
+                <a href="/allieglaser.com" target="_blank">home &nbsp &nbsp</a> | <a href="https://allieglaser.wordpress.com/category/comm-315/" target="_blank"> &nbsp &nbsp my blog &nbsp &nbsp</a> | <a href="https://aaglaser0.wixsite.com/site" target="_blank"> &nbsp &nbsp my portfolio  &nbsp &nbsp:(</a>
+            </footer>
+
+        </div>
+    </main>
+    <script>
+        var content = document.querySelector('main');
+
+        document.querySelector('button').addEventListener('click', function() {
+
+            // Toggle classes
+            document.querySelector('span').classList.toggle('active');
+            document.querySelector('span').classList.toggle('cross');
+            document.querySelector('ul').classList.toggle('nav-visible');
+            content.classList.toggle('activenav');
+        }, false);
+
+    </script>
+</body>
+
+</html>

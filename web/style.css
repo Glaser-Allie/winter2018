@@ -1,0 +1,234 @@
+/*BODY STYLING*/
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden; }
+
+body {
+  background: #fff;
+  perspective: 70vh;
+  margin: 0; }
+
+h1 {
+  color: #ff3366;
+  flex-basis: 100%;
+  justify-content: flex-start;
+  font-family: "Special Elite", cursive;
+  text-align: left;
+  margin: 10vh 0 0 0;
+  font-size: 1.75rem; }
+
+a {
+  font-family: "Special Elite", cursive;
+  text-decoration: none;
+  color: #ff3366; }
+  a:visited {
+    color: #ff3366; }
+
+ul {
+  list-style-type: none; }
+
+/*HEADER STYLING*/
+button {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 6em;
+  height: 6em;
+  border-radius: 6em;
+  border: none;
+  outline: none;
+  background: #fff;
+  box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.1); }
+  button:hover {
+    background: #ff3366; }
+
+.active {
+  background: #444;
+  width: 3.5em;
+  height: 0.5em;
+  margin-top: 6px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center; }
+
+.cross {
+  background: #444;
+  width: 3.5em;
+  height: 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center; }
+
+.cross:nth-of-type(1) {
+  transform: rotate(45deg); }
+
+.cross:nth-of-type(2) {
+  transform: rotate(-45deg);
+  margin-top: -6px; }
+
+span {
+  transition: all 0.9s cubic-bezier(0.5, 10, 0.6, 0.1);
+  display: flex;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px #ff1f57; }
+
+nav {
+  @inlude flex-direction;
+  position: fixed;
+  z-index: 10;
+  width: 20vw;
+  padding: 2rem; }
+  nav ul {
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+    transition: background 0.2s; }
+    nav ul li {
+      flex-basis: 33.33333%;
+      transform: translateY(-30em);
+      transition: all 0.4s ease;
+      opacity: 0;
+      padding: 5vh 1vw;
+      text-align: left; }
+
+nav a {
+  font-size: 1.75rem;
+  letter-spacing: 0.1rem; }
+  nav a:hover {
+    color: #ff9999;
+    position: relative;
+    outline: 0; }
+  nav a:focus {
+    outline: 0;
+    border: none;
+    color: #ff9999;
+    padding: 0.25em; }
+
+/*MAIN STYLING*/
+main {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  background: transparent;
+  height: 100vh;
+  width: 100vw;
+  transition: transform 0.4s;
+  transform-origin: 50% 100%; }
+
+.sidebar {
+  width: 20vw;
+  background-image: url("http://media.idownloadblog.com/wp-content/uploads/2017/09/Aura_Silver-granite-iOS-11-GM-iPhone-wallpapers.jpg");
+  background-repeat: no-repeat;
+  background-size: fill; }
+
+.content {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 2vh 0 0 1vw;
+  width: 80vw;
+  height: 100vh; }
+
+.home {
+  height: 90vh;
+  padding: 5vw; }
+
+footer {
+  height: 10vh;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  margin-left: 5vw; }
+
+/*ACTIVE NAV STYLING*/
+.activenav {
+  opacity: 0.3;
+  transform: rotateX(80deg);
+  transform-origin: 50% 100%;
+  transition: 1s;
+  transition-delay: 0.4s; }
+  .activenav .sidebar {
+    transition: all 0.8s ease-in;
+    transform: translate(-500%, 0%); }
+
+.nav-visible {
+  padding: 1em 0;
+  background: transparent;
+  transition: background 1s;
+  transition-delay: 1s; }
+  .nav-visible li {
+    transform: translateY(0);
+    transition: all 1s ease;
+    opacity: 1; }
+    .nav-visible li:nth-child(1) {
+      transition-delay: 0.4s; }
+    .nav-visible li:nth-child(2) {
+      transition-delay: 0.5s; }
+    .nav-visible li:nth-child(3) {
+      transition-delay: 0.6s; }
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 1.25rem;
+    line-height: 2vh; }
+
+  nav {
+    display: flex;
+    width: 100vw;
+    height: 15vh;
+    padding: 0 2rem 0 1rem; }
+    nav a {
+      font-size: 0.75em; }
+
+  .menu_button {
+    align-items: center;
+    height: 15vh;
+    width: 20vw; }
+
+  button {
+    width: 4em;
+    height: 4em;
+    border-radius: 4rem; }
+
+  main {
+    flex-flow: column;
+    height: 100vh; }
+
+  .content {
+    width: 90vw;
+    height: 85vh; }
+    .content .home {
+      padding: 3vh 0 0 5vw; }
+      .content .home h1 {
+        font-size: 1.5rem;
+        line-height: 2rem; }
+
+  .sidebar {
+    width: 100vw;
+    height: 15vh;
+    background-position: left 24%; }
+
+  /*ACTIVE NAV STYLING*/
+  .activenav {
+    opacity: 0.3;
+    transform: rotateX(80deg);
+    transform-origin: 50% 100%;
+    transition: 0.3s;
+    transition-delay: 0.4s; }
+    .activenav .sidebar {
+      transition: all .8s ease-in;
+      transform: translate(400%, 0); }
+
+  .nav-visible {
+    width: 80vw;
+    display: flex; } }
+
+/*# sourceMappingURL=style.css.map */
