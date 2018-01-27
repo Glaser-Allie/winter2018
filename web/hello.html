@@ -21,7 +21,7 @@
         </div>
         <ul class="home_menu">
             <li><a href="https://murmuring-fortress-48152.herokuapp.com/hello.html" target="_blank">Home</a></li>
-            <li><a href="https://murmuring-fortress-48152.herokuapp.com/assignments.html" target="_blank">Assignments</a></li>
+            <li><a href="https://murmuring-fortress-48152.herokuapp.com//assignment/index.html" target="_blank">Assignments</a></li>
             <li><a href="http://allieglaser.com/poop/" target="_blank">Fun With Poop!</a></li>
         </ul>
     </nav>
@@ -31,8 +31,13 @@
         <div class="content">
             <article class="home">
                 <h1>If you stopped by to see something awesome, you're probably 'bout to be disappointed &nbsp &nbsp &nbsp &nbsp:)</h1>
+<div><?php
 
+  $num=3/4;
+print $num;
 
+?></div>
+                
                 <figure>
                     <img src="images/a_lie.jpg" alt="Two Truths & a Lie">
                     <figcaption>Two Truths &amp; a Lie:<br>I am a Level 39 Pokemon Trainer, I have no idea how to play Lacrosse (so, no, I don't play like a boss) and I do have 3 kids, 2 dogs, 1 fish, and a traveling husband.</figcaption>
@@ -41,24 +46,12 @@
             </article>
 
             <footer>
-                <a href="https://murmuring-fortress-48152.herokuapp.com/hello.html" target="_blank">home &nbsp &nbsp</a> | <a href="https://murmuring-fortress-48152.herokuapp.com/assignments.html" target="_blank"> &nbsp &nbsp assignments &nbsp &nbsp</a> | <a href="https://aaglaser0.wixsite.com/site" target="_blank"> &nbsp &nbsp my portfolio  &nbsp &nbsp:(</a>
+                <a href="https://murmuring-fortress-48152.herokuapp.com/hello.html" target="_blank">home &nbsp &nbsp</a> | <a href="https://murmuring-fortress-48152.herokuapp.com//assignment/index.html" target="_blank"> &nbsp &nbsp assignments &nbsp &nbsp</a> | <a href="https://aaglaser0.wixsite.com/site" target="_blank"> &nbsp &nbsp my portfolio  &nbsp &nbsp:(</a>
             </footer>
 
         </div>
     </main>
-    <script>
-        var content = document.querySelector('main');
-
-        document.querySelector('button').addEventListener('click', function() {
-
-            // Toggle classes
-            document.querySelector('span').classList.toggle('active');
-            document.querySelector('span').classList.toggle('cross');
-            document.querySelector('ul').classList.toggle('nav-visible');
-            content.classList.toggle('activenav');
-        }, false);
-
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
