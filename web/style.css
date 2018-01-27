@@ -76,8 +76,7 @@ button {
   transform: rotate(45deg); }
 
 .cross:nth-of-type(2) {
-  transform: rotate(-45deg);
-  margin-top: -6px; }
+  transform: rotate(-45deg); }
 
 span {
   transition: all 0.9s cubic-bezier(0.5, 10, 0.6, 0.1);
