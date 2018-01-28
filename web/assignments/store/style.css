@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Shrikhand');
+
+*{ margin:0;
+    padding:0;
+}
+
+body {
+    background: whitesmoke;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;  
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Shrikhand', cursive;
+}
+
+h1 {
+    font-size: 5em;
+    color: azure;
+}
+
+h2 {
+    margin-bottom: 1em;
+    margin-left: 5vw;
+    width: 100vw;
+    text-align: left;
+}
+
+h4 {
+    font-size: 1.25em;
+    line-height: .75em;
+}
+
+h4 a:link,
+a:visited {
+    color: deeppink;
+}
+
+h4 a:hover {
+    color: purple;
+}
+
+a {
+    text-decoration: none;
+}
+header {
+    width: 90vw;
+    margin-top:10vh;
+    text-align: right;
+    font-size: 2em;
+}
+.breadcrumb {
+    height: 5vh;
+    width:95vw;
+    text-align: left;
+    margin-left: 5vw;
+}
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: cyan;
+    height: 25vh;
+}
+
+.container::after {
+    position: absolute;
+    bottom: -50px;
+    left: 0px;
+    width: 100%;
+    content: " ";
+    background: radial-gradient(circle at 50% 0%, cyan 29%, darkturquoise 6%, whitesmoke 35%);
+    background-color: whitesmoke;
+    background-size: 5em 10em;
+    height: 5em;
+    background-repeat: repeat-x;
+}
+
+.content {
+    height: 100vh;
+    width:95vw;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin: 0;
+}
+
+.pokecard {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: space-around;
+    text-align: center;
+    height: 30vh;
+    width: 25vh;
+    border-radius: 2em;
+    background: white;
+    margin: 1em;
+}
+
+.pokecard img {
+    height: 10vh;
+}
+
+.card_description {
+    font-size: .75em;
+}
