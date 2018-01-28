@@ -107,39 +107,35 @@ else if(isset($_GET['view_cart'])) {
 	// Display site links
 	echo "<a href='./index.php' class='breadcrumb'>Shoppe Home</a>";
 	
-	echo "<h2>Your Cart</h2>
-	<div class='empty_cart'><a href='./index.php?empty_cart=1'>Empty Cart</a>
-	</div>";
+	echo "<h2>Your Cart</h2>";
 	
 	if(empty($_SESSION['shopping_cart'])) {
 		echo "<h5>Your cart is empty.<h5><br />";
 	}
 	else {
-		echo "<form action='./index.php?view_cart=1' method='post'>
-				<div class='shopping_cart'>
-					<div class='cart_header>
-                    <div>Name</div>
-					<div>Price</div>
-					<div>Quantity</div>
-				</div>";
+		echo "<form action='./index.php?view_cart=1' method='post' class='cart_form'>
+				<ul class='cart_header'>
+                    <li class='name'>Name</li>
+					<li class='price'>Price</li>
+					<li class='quantity'>Quantity</li>
+				</ul>";
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
 					
-					echo "<div class='product_row'>
-						<div><a href='./index.php?view_product=$id'>" . 
-							$products[$product_id]['name'] . "</a></div>
-						<div>" . $products[$product_id]['price'] . "</div>
-						<div>
-							<input type='text' name='quantity[$product_id]' value='" . $product['quantity'] . "' /></div>
-					</div>";
+					echo "<ul>
+						<li class='name'><a href='./index.php?view_product=$id'>" . 
+							$products[$product_id]['name'] . "</a></li>
+						<li class='price'>" . $products[$product_id]['price'] . "</li>
+						<li class='quantity'>
+							<input type='text' maxlength='3' name='quantity[$product_id]' value='" . $product['quantity'] . "' /><input type='submit' name='update_cart' value='Update' /></li>
+					</ul>";
 				}
-			echo "</div>
-			<input type='submit' name='update_cart' value='Update' />
+			echo "</ul>
+			
 			</form>
-			<div lass='checkout'>
-				<a href='./index.php?checkout=1' class='button'>Checkout</a>
+			<div class='checkout'>
+				<a href='./index.php?checkout=1'>Checkout</a>
 			</div>";
-		
 	}
 }
 // Checkout
@@ -162,15 +158,20 @@ else if(isset($_GET['checkout'])) {
 					
 					
 					$total_price += $products[$product_id]['price'] * $product['quantity'];
-					echo "<div><a href='./index.php?view_product=$id'>" . 
-							$products[$product_id]['name'] . "</a></div>
-						<div>$" . $products[$product_id]['price'] . "</div> 
-						<div>" . $product['quantity'] . "</div>
-						<div>" . ($products[$product_id]['price'] * $product['quantity']) . "</div>
+					echo "<ul>
+                    <li class='name'><a href='./index.php?view_product=$id'>" . 
+							$products[$product_id]['name'] . "</a></li>
+                            <li class='price' >$" . $products[$product_id]['price'] . "</li> 
+						<li class='quantity'>" . $product['quantity'] . "</li>
+						<li class='calc_price'>$" . ($products[$product_id]['price'] * $product['quantity']) . "</li>
+                        </ul>
+						
 					";
 				}
 			echo "
-			<p>Total price:\n$" . $total_price . "</p>";
+            <ul>
+			<li class='total'>Total price:\n$" . $total_price . "<li>
+            </ul>";
 		
 	}
 }
