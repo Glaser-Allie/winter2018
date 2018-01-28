@@ -127,7 +127,7 @@ else if(isset($_GET['view_cart'])) {
 							$products[$product_id]['name'] . "</a></li>
 						<li class='price'>" . $products[$product_id]['price'] . "</li>
 						<li class='quantity'>
-							<input type='text' maxlength='3' name='quantity[$product_id]' value='" . $product['quantity'] . "' /><input type='submit' name='update_cart' value='Update' /></li>
+							<input type='text' maxlength='5' name='quantity[$product_id]' value='" . $product['quantity'] . "' /><input type='submit' name='update_cart' value='Update' /></li>
 					</ul>";
 				}
 			echo "</ul>

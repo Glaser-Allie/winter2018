@@ -17,7 +17,7 @@ $products = array(
 		'name' => 'Wurmple',
 		'type' => 'bug',
 		'wave' => '2nd',
-        'price' => '.75',
+        'price' => '0.75',
 		'image' => '<img src="images/265-wurmple.svg">'
 	),	3 => array(
 		'name' => 'Ralts',
@@ -35,7 +35,7 @@ $products = array(
 		'name' => 'Whismur',
 		'type' => 'normal',
 		'wave' => '4th',
-		'price' => '.50',
+		'price' => '0.50',
         'image' => '<img src="images/293-whismur.svg">'
 	),	6 => array(
 		'name' => 'Aron',
