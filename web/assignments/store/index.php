@@ -98,7 +98,7 @@ else if(isset($_GET['view_cart'])) {
 	echo "<p>
 		<a href='./index.php'>Shoppe Home</a></p>";
 	
-	echo "<h3>Your Cart</h3>
+	echo "<h2>Your Cart</h2>
 	<p>
 		<a href='./index.php?empty_cart=1'>Empty Cart</a>
 	</p>";
@@ -129,7 +129,7 @@ else if(isset($_GET['view_cart'])) {
 			<input type='submit' name='update_cart' value='Update' />
 			</form>
 			<p>
-				<a href='./index.php?checkout=1'>Checkout</a>
+				<a href='./index.php?checkout=1'><h2>Checkout<h2></a>
 			</p>";
 		
 	}
