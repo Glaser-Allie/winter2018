@@ -65,15 +65,16 @@ if(isset($_GET['view_product'])) {
 	if(isset($products[$product_id])) {
 		// Display site links
 		echo "<p>
-			<a href='./index.php'>DropShop</a> &gt; <a href='./index.php'>" . 
-			$products[$product_id]['category'] . "</a></p>";
+			<a href='./index.php' class='breadcrumb'>Shoppe Home</a> &gt; <a href='./index.php'>" . 
+			$products[$product_id]['wave'] . "</a></p>";
 		
 		
 		// Display product
 		echo "<p>
 			<span style='font-weight:bold;'>" . $products[$product_id]['name'] . "</span><br />
-			<span>$" . $products[$product_id]['price'] . "</span><br />
-			<span>" . $products[$product_id]['description'] . "</span><br />
+			<span>" . $products[$product_id]['type'] . "</span><br />
+			<span>" . $products[$product_id]['image'] . "</span><br />
+            <span>$" . $products[$product_id]['price'] . "</span><br />
 			<p>
 				<form action='./index.php?view_product=$product_id' method='post'>
 					<select name='quantity'>
@@ -95,7 +96,7 @@ if(isset($_GET['view_product'])) {
 else if(isset($_GET['view_cart'])) {
 	// Display site links
 	echo "<p>
-		<a href='./index.php'>DropShop</a></p>";
+		<a href='./index.php'>Shoppe Home</a></p>";
 	
 	echo "<h3>Your Cart</h3>
 	<p>
@@ -111,7 +112,6 @@ else if(isset($_GET['view_cart'])) {
 				<tr>
 					<th style='border-bottom:1px solid #000000;'>Name</th>
 					<th style='border-bottom:1px solid #000000;'>Price</th>
-					<th style='border-bottom:1px solid #000000;'>Category</th>
 					<th style='border-bottom:1px solid #000000;'>Quantity</th>
 				</tr>";
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
@@ -120,8 +120,7 @@ else if(isset($_GET['view_cart'])) {
 					echo "<tr>
 						<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . 
 							$products[$product_id]['name'] . "</a></td>
-						<td style='border-bottom:1px solid #000000;'>$" . $products[$product_id]['price'] . "</td> 
-						<td style='border-bottom:1px solid #000000;'>" . $products[$product_id]['category'] . "</td>
+						<td style='border-bottom:1px solid #000000;'>" . $products[$product_id]['price'] . "</td>
 						<td style='border-bottom:1px solid #000000;'>
 							<input type='text' name='quantity[$product_id]' value='" . $product['quantity'] . "' /></td>
 					</tr>";
@@ -135,11 +134,11 @@ else if(isset($_GET['view_cart'])) {
 		
 	}
 }
-// Checkount
+// Checkout
 else if(isset($_GET['checkout'])) {
 	// Display site links
 	echo "<p>
-		<a href='./index.php'>DropShop</a></p>";
+		<a href='./index.php' class='breadcrumb'>Shoppe Home</a></p>";
 	
 	echo "<h3>Checkout</h3>";
 	
@@ -148,59 +147,44 @@ else if(isset($_GET['checkout'])) {
 	}
 	else {
 		echo "<form action='./index.php?checkout=1' method='post'>
-		<table style='width:500px;' cellspacing='0'>
-				<tr>
-					<th style='border-bottom:1px solid #000000;'>Name</th>
-					<th style='border-bottom:1px solid #000000;'>Item Price</th>
-					<th style='border-bottom:1px solid #000000;'>Quantity</th>
-					<th style='border-bottom:1px solid #000000;'>Cost</th>
-				</tr>";
+		";
 				
-				$total_price = 0;
+				$total_candy = 0;
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
 					
 					
-					$total_price += $products[$product_id]['price'] * $product['quantity'];
-					echo "<tr>
-						<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . 
-							$products[$product_id]['name'] . "</a></td>
-						<td style='border-bottom:1px solid #000000;'>$" . $products[$product_id]['price'] . "</td> 
-						<td style='border-bottom:1px solid #000000;'>" . $product['quantity'] . "</td>
-						<td style='border-bottom:1px solid #000000;'>$" . ($products[$product_id]['price'] * $product['quantity']) . "</td>
-					</tr>";
+					$total_candy += $products[$product_id]['price'] * $product['quantity'];
+					echo "<div><a href='./index.php?view_product=$id'>" . 
+							$products[$product_id]['name'] . "</a></div>
+						<div>" . $products[$product_id]['price'] . "</div> 
+						<div>" . $product['quantity'] . "</div>
+						<div>" . ($products[$product_id]['price'] * $product['quantity']) . "</div>
+					";
 				}
-			echo "</table>
-			<p>Total price: $" . $total_price . "</p>";
+			echo "
+			<p>Total price: " . $total_price . "</p>";
 		
 	}
 }
 // View all products
 else {
 	// Display site links
-	echo "<p>
-		<a href='./index.php'>DropShop</a></p>";
+	echo "<a href='./index.php' class='breadcrumb'>Shoppe Home</a>";
 	
-	echo "<h3>Our Products</h3>";
-
-	echo "<table style='width:500px;' cellspacing='0'>";
-	echo "<tr>
-		<th style='border-bottom:1px solid #000000;'>Name</th>
-		<th style='border-bottom:1px solid #000000;'>Price</th>
-		<th style='border-bottom:1px solid #000000;'>Category</th>
-	</tr>";
-
+	echo "<h2>Hoenn Region Pok&eacute;mon</h2>";
 
 	// Loop to display all products
 	foreach($products as $id => $product) {
-		echo "<tr>
-			<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . $product['name'] . "</a></td>
-			<td style='border-bottom:1px solid #000000;'>$" . $product['price'] . "</td> 
-			<td style='border-bottom:1px solid #000000;'>" . $product['category'] . "</td>
-		</tr>";
+		echo "<div class='pokecard'>
+			<div><h4><a href='./index.php?view_product=$id'>" . $product['name'] . "</h4></a></div>
+            <div>" . $product['image'] . "</div>
+			<div class='card_description'>" . $product['type'] . "\n\n|\n\n" . $product['wave'] . "\n Wave</div>
+            <div>$" . $product['price'] . "</div>
+		</div>";
 	}
-	echo "</table>";
 }
+	
 
 echo $footer;
 
