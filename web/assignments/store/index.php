@@ -117,7 +117,7 @@ else if(isset($_GET['view_cart'])) {
 				<ul class='cart_header'>
                     <li class='name'>Name</li>
 					<li class='price'>Price</li>
-					<li class='quantity'>Quantity</li>
+					<li class='quantity'>Qty</li>
 				</ul>";
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
@@ -127,7 +127,7 @@ else if(isset($_GET['view_cart'])) {
 							$products[$product_id]['name'] . "</a></li>
 						<li class='price'>" . $products[$product_id]['price'] . "</li>
 						<li class='quantity'>
-							<input type='text' maxlength='5' name='quantity[$product_id]' value='" . $product['quantity'] . "' /><input type='submit' name='update_cart' value='Update' /></li>
+							<input type='text' maxlength='5' class='quantity_input' name='quantity[$product_id]' value='" . $product['quantity'] . "' /><input type='submit' name='update_cart' value='Update' /></li>
 					</ul>";
 				}
 			echo "</ul>
@@ -150,7 +150,11 @@ else if(isset($_GET['checkout'])) {
 	}
 	else {
 		echo "<form action='./index.php?checkout=1' method='post'>
-		";
+		<ul class='cart_header'>
+                    <li class='name'>Name</li>
+					<li class='price'>Price</li>
+					<li class='quantity'>Qty</li>
+				</ul>";
 				
 				$total_candy = 0;
 				foreach($_SESSION['shopping_cart'] as $id => $product) {

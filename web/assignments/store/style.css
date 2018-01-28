@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-}
+    }
 
 body {
     background: whitesmoke;
@@ -187,10 +187,11 @@ header {
 }
 .name, .quantity, .price, .calc_price {
     width: 10vw;
-    text-align: left;
+    text-align: right;
 }
 .total{
     width: 40vw;
+    line-height: 3em;
     text-align: right;
 }
 .checkout{
@@ -200,4 +201,9 @@ header {
 
 .checkout a:link{
     color:coral;
+}
+
+.quantity_input{
+    width: 5vw;
+    text-align: right;
 }
