@@ -24,17 +24,17 @@ if(isset($_POST['add_to_cart'])) {
 	
 	// Check for valid item
 	if(!isset($products[$product_id])) {
-		$message = "Invalid item!<br />";
+		$message = "<h5>Invalid item!</h5><br />";
 	}
 	// If item is already in cart, tell user
 	else if(isset($_SESSION['shopping_cart'][$product_id])) {
-		$message = "Item already in cart!<br />";
+		$message = "<h5>Item already in cart!</h5><br />";
 	}
 	// Otherwise, add to cart
 	else {
 		$_SESSION['shopping_cart'][$product_id]['product_id'] = $_POST['product_id'];
 		$_SESSION['shopping_cart'][$product_id]['quantity'] = $_POST['quantity'];
-		$message = "Added to cart!";
+		$message = "<h5>Added to cart!</h5>";
 	}
 }
 // Update Cart
@@ -42,13 +42,13 @@ if(isset($_POST['update_cart'])) {
 	$quantities = $_POST['quantity'];
 	foreach($quantities as $id => $quantity) {
 		if(!isset($products[$id])) {
-			$message = "Invalid product!";
+			$message = "<h5>Invalid product!</h5>";
 			break;
 		}
 		$_SESSION['shopping_cart'][$id]['quantity'] = $quantity;
 	}
 	if(!$message) {
-		$message = "Cart updated!<br />";
+		$message = "<h5>Cart updated!</h5><br />";
 	}
 }
 
@@ -64,29 +64,39 @@ if(isset($_GET['view_product'])) {
 	
 	if(isset($products[$product_id])) {
 		// Display site links
-		echo "<p>
+		echo "<div class='breadcrumb'>
 			<a href='./index.php' class='breadcrumb'>Shoppe Home</a> &gt; <a href='./index.php'>" . 
-			$products[$product_id]['wave'] . "</a></p>";
+			$products[$product_id]['wave'] . "</a></div>";
 		
 		
 		// Display product
-		echo "<p>
-			<span style='font-weight:bold;'>" . $products[$product_id]['name'] . "</span><br />
-			<span>" . $products[$product_id]['type'] . "</span><br />
-			<span>" . $products[$product_id]['image'] . "</span><br />
-            <span>$" . $products[$product_id]['price'] . "</span><br />
-			<p>
+		echo "<div class='product_page'>
+            <div class='product_img'>" . $products[$product_id]['image'] . "</div><br />
+			<div class='product_specs'>
+                <div><h3>" . $products[$product_id]['name'] . "</h3></div><br />
+			     <div>" . $products[$product_id]['type'] . "</div><br />
+                <div><h4>$" . $products[$product_id]['price'] . "</h4><br />for\n3\ncandies</div><br />
+            
+			<div>
 				<form action='./index.php?view_product=$product_id' method='post'>
 					<select name='quantity'>
 						<option value='1'>1</option>
 						<option value='2'>2</option>
 						<option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                        <option value='7'>7</option>
+                        <option value='8'>8</option>
+                        <option value='9'>9</option>
+                        
 					</select>
 					<input type='hidden' name='product_id' value='$product_id' />
 					<input type='submit' name='add_to_cart' value='Add to cart' />
 				</form>
-			</p>
-		</p>";
+			</div>
+            </div>
+		</div>";
 	}
 	else {
 		echo "Invalid product!";
@@ -95,52 +105,49 @@ if(isset($_GET['view_product'])) {
 // View cart
 else if(isset($_GET['view_cart'])) {
 	// Display site links
-	echo "<p>
-		<a href='./index.php'>Shoppe Home</a></p>";
+	echo "<a href='./index.php' class='breadcrumb'>Shoppe Home</a>";
 	
 	echo "<h2>Your Cart</h2>
-	<p>
-		<a href='./index.php?empty_cart=1'>Empty Cart</a>
-	</p>";
+	<div class='empty_cart'><a href='./index.php?empty_cart=1'>Empty Cart</a>
+	</div>";
 	
 	if(empty($_SESSION['shopping_cart'])) {
-		echo "Your cart is empty.<br />";
+		echo "<h5>Your cart is empty.<h5><br />";
 	}
 	else {
 		echo "<form action='./index.php?view_cart=1' method='post'>
-		<table style='width:500px;' cellspacing='0'>
-				<tr>
-					<th style='border-bottom:1px solid #000000;'>Name</th>
-					<th style='border-bottom:1px solid #000000;'>Price</th>
-					<th style='border-bottom:1px solid #000000;'>Quantity</th>
-				</tr>";
+				<div class='shopping_cart'>
+					<div class='cart_header>
+                    <div>Name</div>
+					<div>Price</div>
+					<div>Quantity</div>
+				</div>";
 				foreach($_SESSION['shopping_cart'] as $id => $product) {
 					$product_id = $product['product_id'];
 					
-					echo "<tr>
-						<td style='border-bottom:1px solid #000000;'><a href='./index.php?view_product=$id'>" . 
-							$products[$product_id]['name'] . "</a></td>
-						<td style='border-bottom:1px solid #000000;'>" . $products[$product_id]['price'] . "</td>
-						<td style='border-bottom:1px solid #000000;'>
-							<input type='text' name='quantity[$product_id]' value='" . $product['quantity'] . "' /></td>
-					</tr>";
+					echo "<div class='product_row'>
+						<div><a href='./index.php?view_product=$id'>" . 
+							$products[$product_id]['name'] . "</a></div>
+						<div>" . $products[$product_id]['price'] . "</div>
+						<div>
+							<input type='text' name='quantity[$product_id]' value='" . $product['quantity'] . "' /></div>
+					</div>";
 				}
-			echo "</table>
+			echo "</div>
 			<input type='submit' name='update_cart' value='Update' />
 			</form>
-			<p>
-				<a href='./index.php?checkout=1'><h2>Checkout<h2></a>
-			</p>";
+			<div lass='checkout'>
+				<a href='./index.php?checkout=1' class='button'>Checkout</a>
+			</div>";
 		
 	}
 }
 // Checkout
 else if(isset($_GET['checkout'])) {
 	// Display site links
-	echo "<p>
-		<a href='./index.php' class='breadcrumb'>Shoppe Home</a></p>";
+	echo "<a href='./index.php' class='breadcrumb'>Shoppe Home</a>";
 	
-	echo "<h3>Checkout</h3>";
+	echo "<h2>Checkout</h2>";
 	
 	if(empty($_SESSION['shopping_cart'])) {
 		echo "Your cart is empty.<br />";
@@ -154,16 +161,16 @@ else if(isset($_GET['checkout'])) {
 					$product_id = $product['product_id'];
 					
 					
-					$total_candy += $products[$product_id]['price'] * $product['quantity'];
+					$total_price += $products[$product_id]['price'] * $product['quantity'];
 					echo "<div><a href='./index.php?view_product=$id'>" . 
 							$products[$product_id]['name'] . "</a></div>
-						<div>" . $products[$product_id]['price'] . "</div> 
+						<div>$" . $products[$product_id]['price'] . "</div> 
 						<div>" . $product['quantity'] . "</div>
 						<div>" . ($products[$product_id]['price'] * $product['quantity']) . "</div>
 					";
 				}
 			echo "
-			<p>Total price: " . $total_price . "</p>";
+			<p>Total price:\n$" . $total_price . "</p>";
 		
 	}
 }
