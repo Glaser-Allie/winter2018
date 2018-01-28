@@ -11,7 +11,8 @@ $header = <<<HTML
 	<div class="container" ><h1>Pok&eacute; Candy Shoppe</h1></div>
 		
         <header>
-            <a href='./index.php?view_cart=1'>View Cart</a>
+            <a href='./index.php?view_cart=1' class="view_cart">View Cart</a>
+            <a href='./index.php?empty_cart=1' class="empty_cart">Empty Cart</a>
 		</header>
         
 		<div class='content'>

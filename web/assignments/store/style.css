@@ -27,7 +27,6 @@ h1 {
 
 h2 {
     margin-bottom: 1em;
-    margin-left: 5vw;
     width: 100vw;
     text-align: left;
 }
@@ -56,19 +55,31 @@ h4 a:hover {
 a {
     text-decoration: none;
 }
+ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
 
 header {
     width: 90vw;
     margin-top: 10vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-self: center;
     text-align: right;
+}
+.view_cart{
+    width:100vw;
     font-size: 2em;
 }
 
 .breadcrumb {
     height: 5vh;
-    width: 95vw;
+    width: 90vw;
     text-align: left;
-    margin-left: 5vw;
 }
 
 .container {
@@ -94,13 +105,12 @@ header {
 }
 
 .content {
-    width: 95vw;
+    width: 90vw;
     display: flex;
     flex-flow: row wrap;
     align-content: flex-start;
     justify-content: center;
     align-self: center;
-    margin: 0;
 }
 
 .pokecard {
@@ -145,26 +155,9 @@ header {
     flex-flow: column nowrap;
 }
 
-.button {
-    width: 8vw;
-    height: 8vh;
-    background: coral; 
-    font-size: 1.5em;
-    border-radius: .2em;
-}
-.button a:link{
-    color: white;
-}
-
-.empty_cart{
-    width: 95vw;
-    text-align: right;
-}
 .cart_header{
-    display:flex;
-    flex-flow:row nowrap;
-    align-content: flex-start;
-    justify-content: space-between;
+  font-size: 1.25em;
+    line-height: 2em;
 }
 
 .shopping_cart{
@@ -173,11 +166,41 @@ header {
     width: 60vw;
     }
 .product_row{
-    width: 40vw;
     height: 6em;
     display:flex;
     flex-flow:row nowrap;
-    align-content: flex-start;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
+.empty_cart{
+    width: 95vw;
+    text-align: right;
+}
+.empty_cart a:link{
+    font-size: .5em;
+}
+
+.cart_form{
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: left;
+}
+.name, .quantity, .price, .calc_price {
+    width: 10vw;
+    text-align: left;
+}
+.total{
+    width: 40vw;
+    text-align: right;
+}
+input{
+    width: 3vw;
+}
+
+.checkout{
+    margin: 1em;
+    font-size: 2em;
+}
+
+.checkout a:link{
+    color:coral;
 }
