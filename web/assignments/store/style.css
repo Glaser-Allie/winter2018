@@ -15,7 +15,8 @@ body {
 
 h1,
 h2,
-h5
+h5, 
+label
 {
     font-family: 'Shrikhand', cursive;
 }
@@ -167,7 +168,7 @@ header {
     width: 60vw;
     }
 .product_row{
-    height: 6em;
+    height: 4em;
     display:flex;
     flex-flow:row nowrap;
     justify-content: space-evenly;
@@ -187,7 +188,7 @@ header {
 }
 .name, .quantity, .price, .calc_price {
     width: 10vw;
-    text-align: right;
+    text-align: left;
 }
 .total{
     width: 40vw;
@@ -206,4 +207,56 @@ header {
 .quantity_input{
     width: 5vw;
     text-align: right;
+}
+
+input[type=text] {
+  height:2.5em;
+  border: 0;
+  width: calc(100% - .1em);
+  margin-left:.1em;
+  box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
+input[type=text]:focus {
+  outline: none;
+  box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
+}
+.checkout_info{
+    width: 40vw;
+    text-align: left;
+    margin-bottom: 5vh;
+}
+
+.checkout_info p{
+    font-family: 'Shrikhand', cursive;
+    margin-top: 2em;
+}
+
+.checkout_info input[placeholder]{
+    
+    font-size: 1em;
+    padding-left: 1em;
+}
+.citystatezip{
+    display:flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.citystatezip input[name=zip]{
+    width:20%;
+}
+.citystatezip input[name=city], input[name=state]{
+    width:39.5%;
+}
+.total{
+    width: 70%;
+    padding-right:5%;
+}
+
+.final_total{
+    display: flex;
+    align-items: center;
 }
