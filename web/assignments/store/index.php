@@ -177,7 +177,7 @@ else if(isset($_GET['checkout'])) {
 				}
 			echo "
             <ul>
-			<li class='total'>Total price:\n\n\n</li><li class='final_total'>$" . number_format($total_price,2) . "<li>
+			<li class='total'>Total price:</li><li class='final_total'>$" . number_format($total_price,2) . "<li>
             </ul>
             
             <div class='checkout_info'>
@@ -222,16 +222,10 @@ else {
 			<div><h4><a href='./index.php?view_product=$id'>" . $product['name'] . "</h4></div>
             <div>" . $product['image'] . "</div></a>
 			<div class='card_description'>" . $product['type'] . "\n\n|\n\n" . $product['wave'] . "\n Wave</div>
-            <div>$" . $product['price'] . "</div>
-            <form action='./index.php?view_product=$product_id' method='post'>
-					<input type='hidden' name='product_id' value='$product_id' />
-					<input type='submit' name='add_to_cart' value='Add to cart' />
-				</form>
-            
+            <div>$" . $product['price'] . "</div>            
 		</div>";
 	}
 }
-	
 
 echo $footer;
 
