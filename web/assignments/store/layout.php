@@ -8,7 +8,7 @@ $header = <<<HTML
 	<link rel='stylesheet' type='text/css' href='./style.css' />
 </head>
 <body>
-	<div class="container" ><h1>Pok&eacute; Candy Shoppe</h1></div>
+	<div class="container" ><a href='./index.php'><h1>Pok&eacute; Candy Shoppe</h1></a></div>
 		
         <header>
             <a href='./index.php?view_cart=1' class="view_cart">View Cart</a>

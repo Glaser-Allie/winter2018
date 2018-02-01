@@ -204,10 +204,7 @@ header {
     color:coral;
 }
 
-.quantity_input{
-    width: 5vw;
-    text-align: right;
-}
+
 
 input[type=text] {
   height:2.5em;
@@ -259,4 +256,9 @@ input[type=text]:focus {
 .final_total{
     display: flex;
     align-items: center;
+}
+
+.quantity_input>input[type=text] {
+    max-width: 5vw;
+    text-align: right;
 }
