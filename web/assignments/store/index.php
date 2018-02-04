@@ -37,6 +37,7 @@ if(isset($_POST['add_to_cart'])) {
 		$message = "<h5>Added to cart!</h5>";
 	}
 }
+
 // Update Cart
 if(isset($_POST['update_cart'])) {
 	$quantities = $_POST['quantity'];
@@ -46,12 +47,15 @@ if(isset($_POST['update_cart'])) {
 			break;
 		}
 		$_SESSION['shopping_cart'][$id]['quantity'] = $quantity;
-	}
-	if(!$message) {
+        $quantity = trim($quantity);
+        if(is_numeric($quantity)){
 		$message = "<h5>Cart updated!</h5><br />";
+        }
+        else {
+        $message = "<h5>Value is not a vaild #!</h5><br />";
+        }
 	}
 }
-
 
 // **DISPLAY PAGE**
 echo $header;
@@ -127,7 +131,8 @@ else if(isset($_GET['view_cart'])) {
 							$products[$product_id]['name'] . "</a></li>
 						<li class='price'>" . $products[$product_id]['price'] . "</li>
 						<li class='quantity'>
-							<input type='text' maxlength='5' class='quantity_input' name='quantity[$product_id]' value='" . $product['quantity'] . "' /><input type='submit' name='update_cart' value='Update' /></li>
+							<input type='text' maxlength='5' class='quantity_input' name='quantity[$product_id]' value='" . $product['quantity'] . "' />
+                            <input type='submit' name='update_cart' value='Update' /></li>
 					</ul>";
 				}
 			echo "</ul>
@@ -174,7 +179,7 @@ else if(isset($_GET['checkout'])) {
                         </ul>
 						
 					";
-				}
+                }
 			echo "
             <ul>
 			<li class='total'>Total price:</li><li class='final_total'>$" . number_format($total_price,2) . "<li>
@@ -183,19 +188,19 @@ else if(isset($_GET['checkout'])) {
             <div class='checkout_info'>
             <p>Please enter your shipping information:</p>
 
-			<input type='text' placeholder='Name' name='name'>
+			<label>&nbsp;</label>
+            <input type='text' placeholder='Name' name='name'>
 			<br/>
-            <br/>
-
-			<input type='text' placeholder='Email Address' name='email'>
+            
+			<label>&nbsp;</label>
+            <input type='text' placeholder='Email Address' name='email'>
 			<br/>
-            <br/>
-            
-			<input type='text' placeholder='Street Address' name='address'>
+           
+			<label>&nbsp;</label>
+            <input type='text' placeholder='Street Address' name='address'>
 			<br/>
-            <br/>
-            
-            
+           
+            <label>&nbsp;</label>
             <div class='citystatezip'>
             <input type='text' placeholder='City' name='city'>\n\n 
             <input type='text' placeholder='State' name='state' maxlength='2'>\n\n\n\n
@@ -203,6 +208,7 @@ else if(isset($_GET['checkout'])) {
             </div>
             
 			<br />
+            <input type='hidden'></input>
             <input type='submit' value='Complete Purchase'>
             </div>";
             
