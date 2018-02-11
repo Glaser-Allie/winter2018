@@ -177,13 +177,12 @@ else if(isset($_GET['checkout'])) {
 						<li class='quantity'>" . $product['quantity'] . "</li>
 						<li class='calc_price'>$" . number_format(($products[$product_id]['price'] * $product['quantity']),2) . "</li>
                         </ul>
-						
-					";
-                }
-			echo "
-            <ul>
-			<li class='total'>Total price:</li><li class='final_total'>$" . number_format($total_price,2) . "<li>
-            </ul>
+                        <ul>
+			             <li class='total'>Total price:</li><li class='final_total'>$" . number_format($total_price,2) . "<li>
+                        </ul>
+                        ]";
+                    
+                    echo "<form action='./index.php?purchase_complete' method='post'>        
             
             <div class='checkout_info'>
             <p>Please enter your shipping information:</p>
@@ -209,12 +208,32 @@ else if(isset($_GET['checkout'])) {
             
 			<br />
             <input type='hidden'></input>
-            <input type='submit' value='Complete Purchase'>
+            <a href='./index.php?purchase_complete'><input type='submit' value='Complete Purchase'></a>
             </div>";
             
-     
+                }
 	}
 }
+// Purchase Complete
+else if(isset($_GET['purchase_complete'])) {
+	// Display site links
+	echo "<a href='./index.php' class='breadcrumb'>Shoppe Home</a>";
+	
+	echo "<h2>Purchase Complete</h2>";
+	
+	if(empty($_SESSION['shopping_cart'])) {
+		echo "Your cart is empty.<br />";
+	}
+	else {
+		echo "<form action='./index.php?order_summary' method='post'>
+		<ul class='cart_header'>
+                    <li class='name'>Name</li>
+					<li class='price'>Price</li>
+					<li class='quantity'>Qty</li>
+				</ul>";
+    }
+}
+
 // View all products
 else {
 	// Display site links

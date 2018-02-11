@@ -1,0 +1,106 @@
+CREATE DATABASE "peak";
+
+\connect "peak";
+
+CREATE SEQUENCE company_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."company" (
+    "id" integer DEFAULT nextval('company_id_seq') NOT NULL,
+    "name" character varying(100) NOT NULL,
+    "contact_name" character varying(100) NOT NULL,
+    "contact_phone" character varying(100) NOT NULL,
+    CONSTRAINT "company_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+
+CREATE SEQUENCE contract_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."contract" (
+    "id" integer DEFAULT nextval('contract_id_seq') NOT NULL,
+    "company_id" integer NOT NULL,
+    "rig_id" integer NOT NULL,
+    "lease_id" integer NOT NULL,
+    "equipment_on_hire_id" integer NOT NULL,
+    CONSTRAINT "contract_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "contract_company_id_fkey" FOREIGN KEY (company_id) REFERENCES company(id) NOT DEFERRABLE,
+    CONSTRAINT "contract_equipment_on_hire_id_fkey" FOREIGN KEY (equipment_on_hire_id) REFERENCES equipment_on_hire(id) NOT DEFERRABLE,
+    CONSTRAINT "contract_lease_id_fkey" FOREIGN KEY (lease_id) REFERENCES lease(id) NOT DEFERRABLE,
+    CONSTRAINT "contract_rig_id_fkey" FOREIGN KEY (rig_id) REFERENCES rig(id) NOT DEFERRABLE
+) WITH (oids = false);
+
+
+CREATE SEQUENCE "Equipment_id_seq" INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."equipment" (
+    "id" integer DEFAULT nextval('"Equipment_id_seq"') NOT NULL,
+    "equip_name" character varying(40) NOT NULL,
+    "quantity" integer NOT NULL,
+    CONSTRAINT "Equipment_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+
+CREATE SEQUENCE equipment_on_hire_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."equipment_on_hire" (
+    "id" integer DEFAULT nextval('equipment_on_hire_id_seq') NOT NULL,
+    "equipment_id" integer NOT NULL,
+    "quantity" smallint NOT NULL,
+    "on_hire_date" date NOT NULL,
+    "off_hire_date" date,
+    "contract_id" integer NOT NULL,
+    CONSTRAINT "equipment_on_hire_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "equipment_on_hire_contract_id_fkey" FOREIGN KEY (contract_id) REFERENCES contract(id) NOT DEFERRABLE,
+    CONSTRAINT "equipment_on_hire_equipment_id_fkey" FOREIGN KEY (equipment_id) REFERENCES equipment(id) NOT DEFERRABLE
+) WITH (oids = false);
+
+
+CREATE SEQUENCE lease_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."lease" (
+    "id" integer DEFAULT nextval('lease_id_seq') NOT NULL,
+    "lease_name" character varying(100) NOT NULL,
+    "lease_#" smallint NOT NULL,
+    "well_#" smallint NOT NULL,
+    "location_id" integer NOT NULL,
+    "rig_id" integer NOT NULL,
+    CONSTRAINT "lease_lease_name_key" UNIQUE ("lease_name"),
+    CONSTRAINT "lease_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "lease_location_id_fkey" FOREIGN KEY (location_id) REFERENCES location(id) NOT DEFERRABLE,
+    CONSTRAINT "lease_rig_id_fkey" FOREIGN KEY (rig_id) REFERENCES rig(id) NOT DEFERRABLE
+) WITH (oids = false);
+
+
+CREATE SEQUENCE location_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."location" (
+    "id" integer DEFAULT nextval('location_id_seq') NOT NULL,
+    "city" character varying(100) NOT NULL,
+    "state" character varying(100) NOT NULL,
+    "county" character varying(100) NOT NULL,
+    "latitude" numeric(10,6),
+    "longitude" numeric(10,6),
+    "directions" text,
+    CONSTRAINT "location_city_key" UNIQUE ("city"),
+    CONSTRAINT "location_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+
+CREATE SEQUENCE rig_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."rig" (
+    "id" integer DEFAULT nextval('rig_id_seq') NOT NULL,
+    "rig_#" smallint NOT NULL,
+    "rig_company_id" integer NOT NULL,
+    CONSTRAINT "rig_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "rig_rig_company_id_fkey" FOREIGN KEY (rig_company_id) REFERENCES rig_company(id) NOT DEFERRABLE
+) WITH (oids = false);
+
+
+CREATE SEQUENCE rig_company_id_seq INCREMENT  MINVALUE  MAXVALUE  START 1 CACHE ;
+
+CREATE TABLE "public"."rig_company" (
+    "id" integer DEFAULT nextval('rig_company_id_seq') NOT NULL,
+    "company_name" character varying(100) NOT NULL,
+    CONSTRAINT "rig_company_company_name_key" UNIQUE ("company_name"),
+    CONSTRAINT "rig_company_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
