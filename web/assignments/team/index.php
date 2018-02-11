@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CS313 Assignments</title>
+
+    <link rel="stylesheet" media="screen" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Allie Glaser">
+    <meta name="description" content="Web Engineering II Experiments.">
+</head>
+
+<body>
+    <nav>
+        <div class='menu_button'>
+            <button>
+        <span class="active"></span>
+        <span class="active"></span>
+     </button>
+        </div>
+        <ul class="home_menu">
+            <li><a href="https://murmuring-fortress-48152.herokuapp.com/hello.html" target="_blank">Home</a></li>
+            <li><a href="https://murmuring-fortress-48152.herokuapp.com/assignments/index.html" target="_blank">Assignments</a></li>
+            <li><a href="http://allieglaser.com/poop/" target="_blank">Fun With Poop!</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="sidebar"></div>
+        <div class="content">
+            <article class="home">
+                <h1>Assignments</h1>
+                
+                <a href="team/index.php" target="_blank"><h2>Week 3</h2></a>
+                <a href="team/index.php" target="_blank"><h2>Week 4</h2></a>
+                <a href="team/scriptures.php" target="_blank"><h2>Week 5</h2></a>
+
+
+            </article>
+
+            <footer>
+                <a href="https://murmuring-fortress-48152.herokuapp.com/hello.html" target="_blank">home &nbsp &nbsp</a> | <a href="https://murmuring-fortress-48152.herokuapp.com/assignments/index.html" target="_blank"> &nbsp &nbsp assignments &nbsp &nbsp</a> | <a href="https://aaglaser0.wixsite.com/site" target="_blank"> &nbsp &nbsp my portfolio  &nbsp &nbsp:(</a>
+            </footer>
+
+        </div>
+    </main>
+    <script>
+        var content = document.querySelector('main');
+
+        document.querySelector('button').addEventListener('click', function() {
+
+            // Toggle classes
+            document.querySelector('span').classList.toggle('active');
+            document.querySelector('span').classList.toggle('cross');
+            document.querySelector('ul').classList.toggle('nav-visible');
+            content.classList.toggle('activenav');
+        }, false);
+
+    </script>
+</body>
+
+</html>
