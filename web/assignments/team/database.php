@@ -1,13 +1,13 @@
-<?php 
+<?php
 function get_db() {
 	$db = NULL;
 	try {
 		// default Heroku Postgres configuration URL
 		$dbUrl = getenv('DATABASE_URL');
 		if (!isset($dbUrl) || empty($dbUrl)) {
-			
-			$dbUrl = "postgres://Alexandra:allie@localhost:5432/mydb";
-			
+			// example localhost configuration URL with user: "ta_user", password: "ta_pass"
+			// and a database called "scripture_ta"
+			$dbUrl = "postgres://Alexandra:allie@localhost:5432/scripture";
 		}
 		// Get the various parts of the DB Connection from the URL
 		$dbopts = parse_url($dbUrl);
@@ -22,9 +22,10 @@ function get_db() {
 		$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	}
 	catch (PDOException $ex) {
+		// If this were in production, you would not want to echo
+		// the details of the exception.
 		echo "Error connecting to DB. Details: $ex";
 		die();
 	}
 	return $db;
 }
-get_db();

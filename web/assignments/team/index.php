@@ -34,7 +34,7 @@
                 
                 <a href="team/index.php" target="_blank"><h2>Week 3</h2></a>
                 <a href="team/index.php" target="_blank"><h2>Week 4</h2></a>
-                <a href="team/scriptures.php" target="_blank"><h2>Week 5</h2></a>
+                <a href="scriptures.php" target="_blank"><h2>Week 5</h2></a>
 
 
             </article>
