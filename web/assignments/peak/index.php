@@ -85,6 +85,24 @@ $db = get_db();
                 <div class='column'></div>
                     </div>
   
+            
+            <div class='container has-text-centered'>
+                
+            <?php
+
+$statement = $db->prepare("SELECT state, county, directions FROM location");
+$statement->execute();
+    
+// Go through each result
+while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+{   echo '<h2 class="subtitle">Example Directions from Contract</h1>';
+	echo '<h2>State: '. $row['state'] . '<br>';
+    echo 'County:  ' . $row['county'] . '</h2></br>';
+	echo '<h2>'. $row['directions'];
+    echo '</h2>';
+}
+?>
+            </div>
 
   <!-- Hero footer: will stick at the bottom -->
   <div class="hero-foot">
