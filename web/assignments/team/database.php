@@ -7,7 +7,7 @@ function get_db() {
 		if (!isset($dbUrl) || empty($dbUrl)) {
 			// example localhost configuration URL with user: "ta_user", password: "ta_pass"
 			// and a database called "scripture_ta"
-			$dbUrl = "postgres://Alexandra:allie@localhost:5432/scripture";
+			$dbUrl = "postgres://Alexandra:Allie@localhost:5432/scripture";
 		}
 		// Get the various parts of the DB Connection from the URL
 		$dbopts = parse_url($dbUrl);
