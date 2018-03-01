@@ -65,8 +65,8 @@ $db = get_db();
                 // Go through each result
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo "<div class='tile is-flex-tablet'>
-                            <div class='tile is-3'>
-                                <div class='card'>
+                            <div class='tile is-4'>
+                                <div class='card tile'>
                                     <header class='card-header'>
                                         <p class='card-header-title'>
                                             " . $row['customer_name'] . "
@@ -80,9 +80,8 @@ $db = get_db();
                                             </div>
                                     </div>
                                     <footer class='card-footer'>
-                                        <a href='#' class='card-footer-item'>Save</a>
                                         <a href='#' class='card-footer-item'>Edit</a>
-                                        <a href='#' class='card-footer-item'>Delete</a>
+                                        <a href='#' class='card-footer-item'>Directions</a>
                                     </footer>
                                 </div>
                                 <br>
